@@ -2,10 +2,53 @@
 namespace BookList\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController; 
+use Zend\View\Model\ViewModel;
+use BookList\Form\BookForm;
 
 class BookController extends AbstractActionController {
-    public function indexAction(){}
-    public function addAction(){}
-    public function editAction(){}
-    public function deleteAction(){}
+    public function indexAction(){
+        
+        return new ViewModel(array(
+            'books' => [],
+        ));
+    } 
+
+    public function addAction(){
+        $form = new BookForm();
+        $form->get('submit')->setValue('add');
+        
+        $request = $this->getRequest();
+        if($request->isPost()){}
+        return array('form' => $form);
+    }
+    
+
+    public function editAction(){
+        $form = new BookForm();
+        # $form->bind($book);
+        $form->get('submit')->setAttribute('value', 'Edit');
+
+        $request = $this->getRequest();
+        if($request->isPost()){}
+        
+        return array(
+            'id' => $id,
+            'form' => $form,
+        );
+    }
+
+    public function deleteAction(){
+        $id = $this->params()->fromRoute('id', 0);
+        if(!$id){
+            return $this->redirect()->toRoute('book');
+        }
+        
+        $request = $this->getRequest();
+        if($request->isPost()){}
+
+        return array(
+            'id' => $id,
+        );
+    }
 }
+
