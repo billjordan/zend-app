@@ -1,4 +1,6 @@
 <?php
+error_reporting(E_ALL);
+ini_set('display_errors', 'On');
 /**
  * If you need an environment-specific system or application configuration,
  * there is an example in the documentation
@@ -9,6 +11,7 @@ return array(
     // This should be an array of module namespaces used in the application.
     'modules' => array(
         'Application',
+        'BookList',
     ),
 
     // These are various options for the listeners attached to the ModuleManager
