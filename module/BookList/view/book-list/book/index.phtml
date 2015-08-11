@@ -13,11 +13,13 @@ $this->headTitle($title);
         <th></th>
     </tr>
     <?php foreach ($books as $book) : ?>
-        <td><?php echo $this->escapeHtml($book->title); ?></td>
-        <td><?php echo $this->escapeHtml($book->author); ?></td>
-        <td>
-            <a href="<?php echo $this->url('book', array('action'=>'edit', 'id'=>$book->id)); ?>">Edit</a>
-            <a href="<?php echo $this->url('book', array('action'=>'delete', 'id'=>$book->id)); ?>">Delete</a>
-        </td>
+        <tr>
+            <td><?php echo $this->escapeHtml($book->title); ?></td>
+            <td><?php echo $this->escapeHtml($book->author); ?></td>
+            <td>
+                <a href="<?php echo $this->url('book', array('action'=>'edit', 'id'=>$book->id)); ?>">Edit</a>
+                <a href="<?php echo $this->url('book', array('action'=>'delete', 'id'=>$book->id)); ?>">Delete</a>
+            </td>
+        </tr>
     <?php endforeach; ?> 
 </table>
