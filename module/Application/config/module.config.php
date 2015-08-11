@@ -15,7 +15,7 @@ return array(
                 'options' => array(
                     'route'    => '/',
                     'defaults' => array(
-                        'controller' => 'Application\Controller\Index',
+                        'controller' => 'BookList\Controller\Book',
                         'action'     => 'index',
                     ),
                 ),
@@ -52,6 +52,36 @@ return array(
             ),
         ),
     ),
+    'navigation' => array(
+        'default' => array(
+            array(
+                'label' => 'Home',
+                'route' => 'home',
+            ),
+            array(
+                'label' => 'Book List',
+                'route' => 'book',
+                'action' => 'index',
+                'pages' => array(
+                    array(
+                        'label' => 'Add',
+                        'route' => 'book',
+                        'action' => 'add',
+                    ),
+                    array(
+                        'label' => 'Edit',
+                        'route' => 'book',
+                        'action' => 'edit',
+                    ),
+                    array(
+                        'label' => 'Delete',
+                        'route' => 'book',
+                        'action' => 'delete',
+                    ),
+                ),
+            ),
+        ),
+    ),
     'service_manager' => array(
         'abstract_factories' => array(
             'Zend\Cache\Service\StorageCacheAbstractServiceFactory',
@@ -59,6 +89,7 @@ return array(
         ),
         'factories' => array(
             'translator' => 'Zend\Mvc\Service\TranslatorServiceFactory',
+            'navigation' => 'Zend\Navigation\Service\DefaultNavigationFactory',
         ),
     ),
     'translator' => array(
